@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- HÃ´te : 127.0.0.1
--- GÃ©nÃ©rÃ© le : mar. 09 mai 2023 Ã  19:07
--- Version du serveur : 10.4.25-MariaDB
--- Version de PHP : 8.1.10
+-- Hôte : 127.0.0.1
+-- Généré le : sam. 13 mai 2023 à 09:03
+-- Version du serveur : 10.4.27-MariaDB
+-- Version de PHP : 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de donnÃ©es : `presta`
+-- Base de données : `presta`
 --
 
 -- --------------------------------------------------------
@@ -32,7 +32,7 @@ CREATE TABLE `ad_band` (
   `title_ad_band` varchar(255) NOT NULL,
   `content_ad_band` text NOT NULL,
   `id_band` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -46,8 +46,21 @@ CREATE TABLE `ad_pro` (
   `content_ad_pro` text NOT NULL,
   `price_ad_pro` decimal(15,3) NOT NULL,
   `sono` tinyint(4) DEFAULT NULL,
-  `id_user` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `number_art` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_style` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `ad_pro`
+--
+
+INSERT INTO `ad_pro` (`id_ad_pro`, `title_ad_pro`, `content_ad_pro`, `price_ad_pro`, `sono`, `number_art`, `id_user`, `id_style`) VALUES
+(1, 'Mariage', 'Je cherche un DJ pour un mariage le 21 juin 2024.\r\nLa durée de la prestation sera de 3 heures avec 2 entractes.', '800.000', 1, 1, 30, 0),
+(2, 'Garage Rock festival', 'Le festival du garage Rock de Houdain fete ses 5 ans le 18 Octobre. Nous recherchons 7 groupes rock pour notre évènement et un concours tremplin pour créer gratutiement votre premier EP.', '300.000', 0, 6, 30, 0),
+(3, 'Deep House', 'Nous organisons une soirée electro house, et nous cherchons 3 DJ pour faire un battle.', '200.000', 1, 3, 30, 0),
+(4, 'Country Roady', 'Notre club de country organise un évènement de dance country et nous cherchons un groupe de country pour rendre l\'évènement plus vivant.', '300.000', 0, 8, 30, 0),
+(5, 'Séminaire Entreprise', 'Nous recherchons un DJ pour notre séminaire d\'entreprise, la durée sera de 1h30.', '150.000', 0, 2, 30, 0);
 
 -- --------------------------------------------------------
 
@@ -69,7 +82,7 @@ CREATE TABLE `band` (
   `price2` decimal(15,3) NOT NULL,
   `presta3` time NOT NULL,
   `id_user` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -80,7 +93,7 @@ CREATE TABLE `band` (
 CREATE TABLE `band_style` (
   `id_style` int(11) NOT NULL,
   `id_band` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -91,7 +104,7 @@ CREATE TABLE `band_style` (
 CREATE TABLE `equipboard` (
   `id_equip` int(11) NOT NULL,
   `name_equip` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -102,7 +115,7 @@ CREATE TABLE `equipboard` (
 CREATE TABLE `mastery` (
   `id_mastery` int(11) NOT NULL,
   `name_mastery` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -113,7 +126,7 @@ CREATE TABLE `mastery` (
 CREATE TABLE `members` (
   `id_band` int(11) NOT NULL,
   `id_user` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -125,7 +138,7 @@ CREATE TABLE `messages` (
   `id_message` int(11) NOT NULL,
   `message` text NOT NULL,
   `date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -136,7 +149,7 @@ CREATE TABLE `messages` (
 CREATE TABLE `my_eb` (
   `id_equip` int(11) NOT NULL,
   `id_user` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -147,7 +160,7 @@ CREATE TABLE `my_eb` (
 CREATE TABLE `my_mastery` (
   `id_mastery` int(11) NOT NULL,
   `id_user` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -158,7 +171,7 @@ CREATE TABLE `my_mastery` (
 CREATE TABLE `my_style` (
   `id_style` int(11) NOT NULL,
   `id_user` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -170,7 +183,7 @@ CREATE TABLE `notice` (
   `id_notice` int(11) NOT NULL,
   `content_notice` text NOT NULL,
   `rating` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -182,7 +195,7 @@ CREATE TABLE `rate` (
   `id_user` int(11) NOT NULL,
   `id_notice` int(11) NOT NULL,
   `id_band` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -194,7 +207,7 @@ CREATE TABLE `send` (
   `id_user` int(11) NOT NULL,
   `id_message` int(11) NOT NULL,
   `id_band` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -205,10 +218,10 @@ CREATE TABLE `send` (
 CREATE TABLE `style` (
   `id_style` int(11) NOT NULL,
   `name_style` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- DÃ©chargement des donnÃ©es de la table `style`
+-- Déchargement des données de la table `style`
 --
 
 INSERT INTO `style` (`id_style`, `name_style`) VALUES
@@ -351,8 +364,8 @@ CREATE TABLE `user` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `born` date NOT NULL,
-  `profile_picture` varchar(255) DEFAULT NULL,
-  `banner_user` varchar(255) DEFAULT NULL,
+  `profile_picture` blob DEFAULT NULL,
+  `banner_user` blob DEFAULT NULL,
   `user_type` varchar(255) NOT NULL,
   `singer` tinyint(4) DEFAULT NULL,
   `city` varchar(255) NOT NULL,
@@ -360,17 +373,18 @@ CREATE TABLE `user` (
   `adress` text DEFAULT NULL,
   `desc_user` text NOT NULL,
   `siret` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- DÃ©chargement des donnÃ©es de la table `user`
+-- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`id_user`, `surname`, `name`, `firstname`, `email`, `password`, `born`, `profile_picture`, `banner_user`, `user_type`, `singer`, `city`, `travel_time`, `adress`, `desc_user`, `siret`) VALUES
-(30, 'Funkins', 'Crespel', 'Florentin', 'floflocres@gmail.com', '$2b$08$osyTcBVkYwbk54Sf5Brd3.JdVd0pHGzv/.fYc21bYHjTTNEOvwDrK', '1994-10-15', NULL, NULL, 'pro', NULL, 'Noeux les mines', '50', NULL, '', '');
+(30, 'Funkins', 'Crespel', 'Florentin', 'flo@flo.com', '$2b$08$zYcdUG4erY76u2uiL30I...DahQK69qRkt5JFG7Cy6TQgSIEiwy.O', '1994-10-15', NULL, NULL, 'pro', NULL, 'noeux', '50', NULL, '', ''),
+(56, 'Punkins', 'flo', 'flo', 'flo@flo', '$2b$08$X7SoLvf/WgYfv62lT1jzYOh31jkEUscuyOqMeXdsix/IPV8aNf21e', '0000-00-00', 0x5b6f626a656374204f626a6563745d, NULL, 'perso', NULL, 'orgri', '50', NULL, '', '');
 
 --
--- Index pour les tables dÃ©chargÃ©es
+-- Index pour les tables déchargées
 --
 
 --
@@ -385,7 +399,8 @@ ALTER TABLE `ad_band`
 --
 ALTER TABLE `ad_pro`
   ADD PRIMARY KEY (`id_ad_pro`),
-  ADD KEY `ad_pro_user_FK` (`id_user`);
+  ADD KEY `ad_pro_user_FK` (`id_user`),
+  ADD KEY `id_style` (`id_ad_pro`);
 
 --
 -- Index pour la table `band`
@@ -482,7 +497,7 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT pour les tables dÃ©chargÃ©es
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
@@ -495,7 +510,7 @@ ALTER TABLE `ad_band`
 -- AUTO_INCREMENT pour la table `ad_pro`
 --
 ALTER TABLE `ad_pro`
-  MODIFY `id_ad_pro` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ad_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `band`
@@ -537,10 +552,10 @@ ALTER TABLE `style`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
--- Contraintes pour les tables dÃ©chargÃ©es
+-- Contraintes pour les tables déchargées
 --
 
 --
