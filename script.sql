@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 13 mai 2023 à 09:03
+-- Généré le : ven. 09 juin 2023 à 18:35
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.2.0
 
@@ -372,16 +372,18 @@ CREATE TABLE `user` (
   `travel_time` varchar(255) DEFAULT NULL,
   `adress` text DEFAULT NULL,
   `desc_user` text NOT NULL,
-  `siret` varchar(255) NOT NULL
+  `siret` varchar(255) NOT NULL,
+  `user_role` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id_user`, `surname`, `name`, `firstname`, `email`, `password`, `born`, `profile_picture`, `banner_user`, `user_type`, `singer`, `city`, `travel_time`, `adress`, `desc_user`, `siret`) VALUES
-(30, 'Funkins', 'Crespel', 'Florentin', 'flo@flo.com', '$2b$08$zYcdUG4erY76u2uiL30I...DahQK69qRkt5JFG7Cy6TQgSIEiwy.O', '1994-10-15', NULL, NULL, 'pro', NULL, 'noeux', '50', NULL, '', ''),
-(56, 'Punkins', 'flo', 'flo', 'flo@flo', '$2b$08$X7SoLvf/WgYfv62lT1jzYOh31jkEUscuyOqMeXdsix/IPV8aNf21e', '0000-00-00', 0x5b6f626a656374204f626a6563745d, NULL, 'perso', NULL, 'orgri', '50', NULL, '', '');
+INSERT INTO `user` (`id_user`, `surname`, `name`, `firstname`, `email`, `password`, `born`, `profile_picture`, `banner_user`, `user_type`, `singer`, `city`, `travel_time`, `adress`, `desc_user`, `siret`, `user_role`) VALUES
+(30, 'Funkins', 'Crespel', 'Florentin', 'flo@flo.com', '$2b$08$zYcdUG4erY76u2uiL30I...DahQK69qRkt5JFG7Cy6TQgSIEiwy.O', '1994-10-15', NULL, NULL, 'pro', NULL, 'noeux', '50', NULL, '', '', 1),
+(56, 'Punkins', 'flo', 'flo', 'flo@flo', '$2b$08$X7SoLvf/WgYfv62lT1jzYOh31jkEUscuyOqMeXdsix/IPV8aNf21e', '0000-00-00', 0x5b6f626a656374204f626a6563745d, NULL, 'perso', NULL, 'orgri', '50', NULL, '', '', 0),
+(58, 'Jymmy', 'yb', 'ibnhj', 'th@th', '$2b$08$LnFX.IvoVpZhWIaP3gppyujVcT5JkeO6ac9i2.CpXOcIdecqZC9L6', '0000-00-00', 0x5b6f626a656374204f626a6563745d, NULL, 'perso', NULL, 'yu', 'inhjh', NULL, '', '', 0);
 
 --
 -- Index pour les tables déchargées
@@ -552,7 +554,7 @@ ALTER TABLE `style`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- Contraintes pour les tables déchargées
