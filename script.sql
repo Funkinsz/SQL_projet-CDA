@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 09 juin 2023 à 18:35
+-- Généré le : ven. 21 juil. 2023 à 16:20
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.2.0
 
@@ -48,19 +48,18 @@ CREATE TABLE `ad_pro` (
   `sono` tinyint(4) DEFAULT NULL,
   `number_art` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_style` int(11) NOT NULL
+  `id_style` int(11) NOT NULL,
+  `date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `ad_pro`
 --
 
-INSERT INTO `ad_pro` (`id_ad_pro`, `title_ad_pro`, `content_ad_pro`, `price_ad_pro`, `sono`, `number_art`, `id_user`, `id_style`) VALUES
-(1, 'Mariage', 'Je cherche un DJ pour un mariage le 21 juin 2024.\r\nLa durée de la prestation sera de 3 heures avec 2 entractes.', '800.000', 1, 1, 30, 0),
-(2, 'Garage Rock festival', 'Le festival du garage Rock de Houdain fete ses 5 ans le 18 Octobre. Nous recherchons 7 groupes rock pour notre évènement et un concours tremplin pour créer gratutiement votre premier EP.', '300.000', 0, 6, 30, 0),
-(3, 'Deep House', 'Nous organisons une soirée electro house, et nous cherchons 3 DJ pour faire un battle.', '200.000', 1, 3, 30, 0),
-(4, 'Country Roady', 'Notre club de country organise un évènement de dance country et nous cherchons un groupe de country pour rendre l\'évènement plus vivant.', '300.000', 0, 8, 30, 0),
-(5, 'Séminaire Entreprise', 'Nous recherchons un DJ pour notre séminaire d\'entreprise, la durée sera de 1h30.', '150.000', 0, 2, 30, 0);
+INSERT INTO `ad_pro` (`id_ad_pro`, `title_ad_pro`, `content_ad_pro`, `price_ad_pro`, `sono`, `number_art`, `id_user`, `id_style`, `date`) VALUES
+(1, 'Mariage', 'Je cherche un DJ pour un mariage le 21 juin 2024.\nLa durée de la prestation sera de 3 heures avec 2 entractes.', '800.000', 1, 1, 30, 0, '2024-06-21'),
+(2, 'Garage Rock festival', 'Le festival du garage Rock de Houdain fete ses 5 ans le 18 Octobre. Nous recherchons 7 groupes rock pour notre évènement et un concours tremplin pour créer gratutiement votre premier EP.', '300.000', 0, 5, 30, 0, '2024-04-09'),
+(3, 'Deep House', 'Nous organisons une soirée electro house, et nous cherchons 3 DJ pour faire un battle.', '200.000', 1, 3, 30, 0, '2023-07-29');
 
 -- --------------------------------------------------------
 
@@ -381,8 +380,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `surname`, `name`, `firstname`, `email`, `password`, `born`, `profile_picture`, `banner_user`, `user_type`, `singer`, `city`, `travel_time`, `adress`, `desc_user`, `siret`, `user_role`) VALUES
-(30, 'Funkins', 'Crespel', 'Florentin', 'flo@flo.com', '$2b$08$zYcdUG4erY76u2uiL30I...DahQK69qRkt5JFG7Cy6TQgSIEiwy.O', '1994-10-15', NULL, NULL, 'pro', NULL, 'noeux', '50', NULL, '', '', 1),
-(56, 'Punkins', 'flo', 'flo', 'flo@flo', '$2b$08$X7SoLvf/WgYfv62lT1jzYOh31jkEUscuyOqMeXdsix/IPV8aNf21e', '0000-00-00', 0x5b6f626a656374204f626a6563745d, NULL, 'perso', NULL, 'orgri', '50', NULL, '', '', 0),
+(30, 'Funkins', 'Crespel', 'Florentin', 'fl.crespel@gmail.com', '$2b$08$zYcdUG4erY76u2uiL30I...DahQK69qRkt5JFG7Cy6TQgSIEiwy.O', '1994-10-15', NULL, NULL, 'perso', NULL, 'noeux', '50', NULL, '', '', 1),
+(56, 'Punkins', 'flo', 'flo', 'flo@flo', '$2b$08$X7SoLvf/WgYfv62lT1jzYOh31jkEUscuyOqMeXdsix/IPV8aNf21e', '0000-00-00', 0x5b6f626a656374204f626a6563745d, NULL, 'perso', NULL, 'orgri', '50', NULL, '', '', -1),
 (58, 'Jymmy', 'yb', 'ibnhj', 'th@th', '$2b$08$LnFX.IvoVpZhWIaP3gppyujVcT5JkeO6ac9i2.CpXOcIdecqZC9L6', '0000-00-00', 0x5b6f626a656374204f626a6563745d, NULL, 'perso', NULL, 'yu', 'inhjh', NULL, '', '', 0);
 
 --
